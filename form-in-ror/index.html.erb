@@ -1,0 +1,197 @@
+<main class=" container font-poppins  mx-auto relative  flex h-screen lg:h-full justify-center items-center w-full  ">
+    <!-- wrap container -->
+    <div data-controller="payment"
+        class=" w-[35rem]  lg:w-full  bg-white shadow-[-10px_-10px_30px_4px_rgba(0,0,0,0.1),_10px_10px_30px_4px_rgba(45,78,255,0.15)]   rounded-xl  gap-4   xs:p-3 p-5">
+        <!-- headings -->
+        <h1 class="font-semibold text-2xl sm:text-center   sm:pb-3   text-blue-600">Payment details</h1>
+        <p class=" sm:text-center sm:hidden pb-3 ">Complete your application by providing your payment details</p>
+        <!-- Toogle nav -->
+        <nav class=" flex flex-col gap-2 bg-slate-200  rounded-lg px-1 justify-between   w-full items-center ">
+            <div class="flex w-full h-14 pt-1">
+            <!-- 1st btn -->
+            <button class="flex nav-btn-color  w-full rounded-lg justify-center items-center gap-0.5"
+                 data-action="payment#showForm" data-form-name="creditCard" data-target="payment.creditCardBtn">
+                <%= image_tag("credit-card.png",alt: "onebill" ) %> Credit Card
+            </button>
+            <!-- 2nd btn -->
+            <button class="flex rounded-lg justify-center w-full gap-1  items-center"
+             data-action="payment#showForm" data-form-name="sadapay" data-target="payment.sadapayBtn">
+                <%= image_tag("oneBill.png", size:"30x30",alt: "onebill" ) %>Sadapay
+            </button></div>
+            <div class="flex w-full h-14 pb-1">
+      <!-- 3d btn -->
+               <button class="flex w-full rounded-lg justify-center items-center gap-0.5"
+               data-action="payment#showForm" data-form-name="jazzcash" data-target="payment.jazzcashBtn">
+                <%= image_tag("credit-card.png",alt: "onebill" ) %> Jazzcash
+            </button>
+            <!-- 4nd btn -->
+            <button class="flex rounded-lg justify-center w-full gap-1  items-center"
+                data-action="payment#showForm" data-form-name="easypaisa" data-target="payment.easypaisaBtn">
+                <%= image_tag("oneBill.png", size:"30x30",alt: "onebill" ) %>Easypaisa
+            </button></div>
+        </nav>
+        <br>
+
+        <!-- credit Card Form container -->
+
+        <div class=" w-full h-full  " id="creditCard" data-target="payment.creditCard">
+            <form action="#" method="post" data-action="submit->payment#validateForm" autocomplete="off"
+                class="grid md:gap-0 gap-3 ">
+
+                <!-- Email-->
+
+                <div class="mb-4 ">
+                    <label for="card-holder"
+                        class="after:content-['*'] after:text-red-600 relative bottom-1   text-gray-600 ">Email</label>
+                    <input type="email" id="email" name="email" placeholder="Email"
+                        class="  appearance-none capitalize border-gray-300 rounded-lg w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline "
+                        required>
+                </div>
+                <!-- credit Card input wrapper -->
+                <div class=" w-full h-full px-3 pt-3 rounded-lg bg-slate-100 ">
+                    <!-- card-holder -->
+                    <div class="mb-4 ">
+                        <label for="card-holder"
+                            class="after:content-['*'] after:text-red-600 relative bottom-1   text-gray-600 ">Card
+                            holder</label>
+                        <input type="text" id="card-holder" name="card-holder" data-action="input->payment#cardName"
+                            data-target="payment.cardName" placeholder="Applyace"
+                            class="  appearance-none capitalize border-gray-300 rounded-lg w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline "
+                            required>
+                    </div>
+                    <!-- card-number  -->
+                    <div class="mb-4 ">
+                        <label for="card-number"
+                            class="after:content-['*']  gap-0.5 text-gray-600 after:text-red-600  relative bottom-1">Card
+                            Number</label>
+                        <input type="text" id="card-number" name="card-number" placeholder="xxxx xxxx xxxx xxxx"
+                            data-action="input->payment#formatCardNumber" data-target="payment.cardNumber"
+                            class="appearance-none border-gray-300  rounded-lg w-full py-2 px-3  text-gray-700 leading-tight focus:outline-none focus:shadow-outline "
+                            required>
+                    </div>
+                    <!-- Expiration and cvv  wrapper -->
+                    <div class="w-ful   h-full flex sm:flex-col sm:gap-0 gap-3 ">
+                        <!-- Expiration date-->
+                        <div class="mb-4 ">
+                            <label for="expiration-date "
+                                class="after:content-['*'] after:text-red-600 relative bottom-1   text-gray-600 ">Expiration
+                                Date</label>
+                            <input type="text" id="expiration-date" name="expiration-date" placeholder="mm / yy"
+                                data-action="input->payment#formatExpirationDate" data-target="payment.expirationDate"
+                                class="appearance-none  border-gray-300  rounded-lg w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                required>
+                        </div>
+                        <!--  cvv  -->
+                        <div class="mb-4  ">
+                            <label for="cvv "
+                                class="after:content-['*']   gap-0.5 text-gray-600 after:text-red-600 relative bottom-1 ">CVV</label>
+                            <input type="password" id="cvv" name="cvv" data-action="input->payment#formatCVV"
+                                placeholder="xxx" data-target="payment.cvv"
+                                class="appearance-none border-gray-300  rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                required>
+                        </div>
+                    </div>
+                </div>
+                <!-- submit btn -->
+                <div class="flex items-center justify-between pt-2.5">
+                    <button type="submit"
+                        class="bg-blue-500 w-full hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded focus:outline-none focus:shadow-outline flex justify-center items-center pl-2">Pay
+                        ace</button>
+                </div>
+
+            </form>
+        </div>
+
+        <!-- ----------------------------------------------------- -->
+
+        <!-- one Bill Form wrapper-->
+
+        <div id="sadapay" data-target="payment.sadapay" class="hidden  w-full ">
+
+            <form autocomplete="off" class=" grid gap-2">
+
+                <div class="relative grid gap-3">
+                    <label for="sadaname"
+                        class="after:content-['*'] after:text-red-600 relative left-1   text-gray-600 ">Name</label>
+                    <input id="sadaname" 
+                        type="text"
+                        class="block border-gray-300 w-full p-4  text-sm text-gray-900 rounded-lg bg-gray-50  focus:border-blue-500 "
+                        placeholder="Enter Your sadapay name" required>
+
+                    <label for="sadaNumber"class="after:content-['*'] after:text-red-600 relative left-1 text-gray-600 ">Phone no</label>
+                    <input id="sadaNumber" data-action="input->payment#formatMobileNo" data-target="payment.formatMobileNo"
+                        type="text"
+                        class="block border-gray-300 w-full p-4  text-sm text-gray-900 rounded-lg bg-gray-50  focus:border-blue-500 "
+                        placeholder="Enter Sadapay Phone no" value="+92" required>
+
+                     <button type="submit"
+                        class="bg-blue-500 w-full hover:bg-blue-700 text-white font-semibold py-2 relative top-1 px-4 rounded focus:outline-none focus:shadow-outline flex justify-center items-center pl-2">Pay
+                        ace</button>
+                </div>
+            </form>
+          
+        </div>
+
+        <div id="jazzcash" data-target="payment.jazzcash" class="hidden  w-full ">
+               <form autocomplete="off" class=" grid gap-2">
+                <div class="relative grid gap-3">
+                    <label for="jazzname"
+                        class="after:content-['*'] after:text-red-600 relative left-1   text-gray-600 ">Name</label>
+                    <input id="jazzname" 
+                        type="text"
+                        class="block border-gray-300 w-full p-4  text-sm text-gray-900 rounded-lg bg-gray-50  focus:border-blue-500 "
+                        placeholder="Enter Your Jazzcash name" required>
+
+                    <label for="jazzNumber"class="after:content-['*'] after:text-red-600 relative left-1 text-gray-600 ">Phone no</label>
+                    <input id="jazzNumber" data-action="input->payment#formatMobileNo" data-target="payment.formatMobileNo"
+                        type="text"
+                        class="block border-gray-300 w-full p-4  text-sm text-gray-900 rounded-lg bg-gray-50  focus:border-blue-500 "
+                        placeholder="Enter Jazzcash Phone no" value="+92" required>
+
+                     <button type="submit"
+                        class="bg-blue-500 w-full hover:bg-blue-700 text-white font-semibold py-2 px-4  relative top-1 rounded focus:outline-none focus:shadow-outline flex justify-center items-center pl-2">Pay
+                        ace</button>
+                </div>
+               </form>
+        </div>
+
+
+        <div id="easypaisa" data-target="payment.easypaisa" class="hidden  w-full ">
+          <form autocomplete="off" class=" grid gap-2">
+                <div class="relative grid gap-3">
+                    <label for="easyname"
+                        class="after:content-['*'] after:text-red-600 relative left-1   text-gray-600 ">Name</label>
+                    <input id="easyname" 
+                        type="text"
+                        class="block border-gray-300 w-full p-4  text-sm text-gray-900 rounded-lg bg-gray-50  focus:border-blue-500 "
+                        placeholder="Enter Your Easypaisa name" required>
+
+                    <label for="easyNumber"class="after:content-['*'] after:text-red-600 relative left-1 text-gray-600 ">Phone no</label>
+                    <input id="easyNumber" data-action="input->payment#formatMobileNo" data-target="payment.formatMobileNo"
+                        type="text"
+                        class="block border-gray-300 w-full p-4  text-sm text-gray-900 rounded-lg bg-gray-50  focus:border-blue-500 "
+                        placeholder="Enter Easypaisa Phone no" value="+92" required>
+
+                     <button type="submit"
+                        class="bg-blue-500 w-full hover:bg-blue-700 text-white font-semibold py-2 px-4  relative top-1 rounded focus:outline-none focus:shadow-outline flex justify-center items-center pl-2">Pay
+                        ace</button>
+                </div>
+               </form>
+        </div>
+        <br>
+             <!-- image cards container -->
+            <div class=" bg-slate-200  rounded-lg">
+                <%= image_tag("card banner.png",alt: "applyace" ) %>
+            </div>
+                    <!--  encrypted note-->
+        <div class="flex justify-center items-center pt-5 gap-2 "><svg xmlns="http://www.w3.org/2000/svg" width="24"
+                height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-lock">
+                <rect width="18" height="11" x="3" y="11" rx="2" ry="2" />
+                <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+            </svg>
+            <p>Payments are secure and encrypted</p>
+        </div>
+
+    </div>
+</main>
