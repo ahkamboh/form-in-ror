@@ -1,11 +1,3 @@
-Certainly! Below is the complete README.md file with all the provided C++ programs:
-
----
-
-# C++ Pattern Programs
-
-This repository contains various C++ programs to generate patterns.
-
 ## Activity One
 
 ### 1. Right-angled triangle pattern of asterisks:
